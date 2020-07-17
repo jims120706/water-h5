@@ -1,127 +1,24 @@
 <template>
   <div class="home-page">
-    <div class="header">微信绑定</div>
-    <van-form @submit="onFormSubmit" class="form">
-      <van-field
-        class="form-item"
-        label-class="form-label"
-        v-model="formData.username"
-        name="username"
-        label="姓名"
-        placeholder="请输入姓名"
-      />
-      <van-field
-        class="form-item"
-        label-class="form-label"
-        v-model="formData.area"
-        name="area"
-        label="区域"
-        placeholder="请选择区域"
-        readonly
-        clickable
-        @click="showAreaPicker = true"
-      />
-      <van-field
-        class="form-item"
-        label-class="form-label"
-        v-model="formData.phone"
-        name="phone"
-        label="手机号码"
-        placeholder="请输入姓名"
-      />
-      <van-field
-        class="form-item"
-        label-class="form-label"
-        v-model="formData.buildingNum"
-        name="buildingNum"
-        label="宿舍楼宇或宿舍栋号"
-        placeholder="请输入栋号"
-      />
-      <van-field
-        class="form-item"
-        label-class="form-label"
-        v-model="formData.dormitoryNum"
-        name="dormitoryNum"
-        label="宿舍号"
-        placeholder="请输入宿舍号"
-      />
-      <van-field
-        class="form-item"
-        label-class="form-label"
-        v-model="formData.graduationYear"
-        name="graduationYear"
-        label="毕业年份"
-        placeholder="请选择毕业年份"
-        readonly
-        clickable
-        @click="showYearPicker = true"
-      />
-      <van-button type="primary" block class="submit-btn">提交</van-button>
-    </van-form>
-    <van-popup v-model="showAreaPicker" round position="bottom">
-      <van-picker
-        show-toolbar
-        :columns="areaList"
-        @cancel="showAreaPicker = false"
-        @confirm="onConfirmArea"
-      />
-    </van-popup>
-    <van-popup v-model="showYearPicker" round position="bottom">
-      <van-picker
-        show-toolbar
-        :columns="yearList"
-        @cancel="showYearPicker = false"
-        @confirm="onConfirmYear"
-      />
-    </van-popup>
+    <div class="header">欢迎来到XXXXX</div>
+    <div class="center-box">
+      <van-button block type="primary" class="home-button" @click="openPage('bind')">微信绑定</van-button>
+      <van-button block type="primary" class="home-button" @click="openPage('appointment')">预约送水</van-button>
+    </div>
   </div>
 </template>
 
 <script>
-import {
-  Form as VanForm,
-  Field as VanField,
-  Button as VanButton,
-  Picker as VanPicker,
-  Popup as VanPopup
-} from "vant";
+import { Button as VanButton } from "vant";
 export default {
   components: {
-    VanForm,
-    VanField,
-    VanButton,
-    VanPopup,
-    VanPicker
-  },
-  data() {
-    return {
-      formData: {
-        username: "",
-        area: "",
-        phone: "",
-        buildingNum: "",
-        dormitoryNum: "",
-        graduationYear: ""
-      },
-      areaList: ["区域1", "区域2", "区域3"],
-      yearList: ["2019", "2020"],
-      showYearPicker: false,
-      showAreaPicker: false
-    };
+    VanButton
   },
   methods: {
-    onConfirmArea(area) {
-      this.showAreaPicker = false;
-      this.formData.area = area;
-      console.log("选中的地址", area);
-    },
-    onConfirmYear(year) {
-      this.showYearPicker = false;
-      this.formData.graduationYear = year;
-      console.log("选中的年份", year);
-    },
-    onFormSubmit(data) {
-      console.log("提交表单", data);
+    openPage(path) {
+      this.$router.push({
+        path
+      });
     }
   }
 };
@@ -140,20 +37,11 @@ export default {
     text-align: center;
     border-bottom: 1px solid #ebedf0;
   }
-  > .form {
-    width: 100%;
-    > .form-item {
-      width: 100%;
-      .form-label {
-        > span {
-          font-size: 20px;
-          font-weight: bold;
-        }
-      }
-    }
-    > .submit-btn {
-      margin-top: 20px;
-      box-sizing: border-box;
+  > .center-box {
+    width: 60%;
+    margin: 0 auto;
+    > .home-button {
+      margin-top: 10px;
     }
   }
 }
