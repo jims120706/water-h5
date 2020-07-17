@@ -62,7 +62,7 @@
       <van-picker
         show-toolbar
         :columns="areaList"
-        @cancel="showPicker = false"
+        @cancel="showAreaPicker = false"
         @confirm="onConfirmArea"
       />
     </van-popup>
@@ -70,7 +70,7 @@
       <van-picker
         show-toolbar
         :columns="yearList"
-        @cancel="showPicker = false"
+        @cancel="showYearPicker = false"
         @confirm="onConfirmYear"
       />
     </van-popup>
