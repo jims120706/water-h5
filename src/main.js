@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import routes from './router'
 import VueRouter from 'vue-router';
+import Apis from '@/apis';
 import '@/assets/public.scss'
 
 Vue.use(VueRouter);
@@ -11,7 +12,7 @@ Vue.config.productionTip = false
 const router = new VueRouter({
   mode: 'hash',
   routes,
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) { 
     if (savedPosition) {
       return savedPosition
     } else {
@@ -38,6 +39,8 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
+
+Vue.prototype.$apis = Apis;
 new Vue({
   router,
   render: h => h(App),
